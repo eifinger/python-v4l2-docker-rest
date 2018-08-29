@@ -3,10 +3,12 @@ import select
 import v4l2capture
 import time
 import logging
-from aiohttp import web
+from flask import Flask, send_file
+import os
 
 __VERSION__ = "0.1"
 __LOGGER_NAME__ = "python-v4l2-docker-rest"
+app = Flask(__name__)
 
 def main():
     """
@@ -22,14 +24,16 @@ def main():
     logger = setup_logger()
     logger.info("Running Version: {}".format(__VERSION__))
 
-    app = web.Application()
-    app.add_routes([web.get('/getImage', getImage)])
+    logger.info("Starting WebServer...")
+    app.run(host='0.0.0.0', port=8080, debug=False)
 
-    web.run_app(app)
-
-async def getImage(request):
-    path = takeImage()
-    return web.FileResponse(path=path)
+@app.route('/getImage', methods=['GET'])
+def getImage():
+    filename = takeImage()
+    try:
+        return send_file(filename, attachment_filename=os.path.split(filename)[1])
+    except Exception as e:
+        return str(e)
 
 def takeImage():
     # Open the video device.
