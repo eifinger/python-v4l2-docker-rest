@@ -27,7 +27,7 @@ def main():
     logger.info("Starting WebServer...")
     app.run(host='0.0.0.0', port=8080, debug=False)
 
-@app.route('/getImage', methods=['GET'])
+@app.route('/image', methods=['GET'])
 def getImage():
     filename = takeImage()
     try:
