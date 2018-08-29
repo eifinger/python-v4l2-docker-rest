@@ -3,7 +3,7 @@ python-v4l2-docker-rest
 
 eifinger/python-v4l2-docker with a rest interface
 
-##Usage
+## Usage
 
 ``sudo docker run --device=/dev/video0 -v <image directory>:/capture -it --name <container name> eifinger/python-v4l2-docker-rest``
 For example:  
