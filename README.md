@@ -1,7 +1,7 @@
 python-v4l2-docker-rest
 =================
 
-eifinger/python-v4l2-docker with a rest interface
+[eifinger/python-v4l2-docker](https://github.com/eifinger/python-v4l2-docker) with a rest interface
 
 ## Usage
 
