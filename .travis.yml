@@ -14,5 +14,7 @@ script:
   - docker build -f Dockerfile -t eifinger/python-v4l2-docker-rest:latest .;
   - docker push eifinger/python-v4l2-docker-rest:latest;
   # Ubuntu arm32v7 Image
+  # https://blog.hypriot.com/post/setup-simple-ci-pipeline-for-arm-images/
+  - docker run --rm --privileged multiarch/qemu-user-static:register --reset
   - docker build -f Dockerfile-arm32v7 -t eifinger/python-v4l2-docker-rest:arm32v7-latest .;
   - docker push eifinger/python-v4l2-docker-rest:arm32v7-latest;
