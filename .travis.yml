@@ -9,10 +9,10 @@ services:
   - docker
 
 script:
-  docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   # Ubuntu Image
-  docker build -f Dockerfile -t eifinger/python-v4l2-docker-rest:latest .;
-  docker push eifinger/python-v4l2-docker-rest:latest;
+  - docker build -f Dockerfile -t eifinger/python-v4l2-docker-rest:latest .;
+  - docker push eifinger/python-v4l2-docker-rest:latest;
   # Ubuntu arm32v7 Image
-  docker build -f Dockerfile-arm32v7 -t eifinger/python-v4l2-docker-rest:arm32v7-latest .;
-  docker push eifinger/python-v4l2-docker-rest:arm32v7-latest;
+  - docker build -f Dockerfile-arm32v7 -t eifinger/python-v4l2-docker-rest:arm32v7-latest .;
+  - docker push eifinger/python-v4l2-docker-rest:arm32v7-latest;
