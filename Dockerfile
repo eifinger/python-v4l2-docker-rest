@@ -1,10 +1,7 @@
 FROM ubuntu:16.04
 
 RUN apt-get update -qq  \
-	&& apt-get install -y libv4l-dev \
-	&& apt-get install -y libjpeg8-dev \
-    && apt-get install -y git \
-    && apt-get install -y python-pip
+	&& apt-get install -y libv4l-dev libjpeg8-dev git python-pip
 
 RUN pip install "django<2" Image==1.5.27 flask==1.0.2
 

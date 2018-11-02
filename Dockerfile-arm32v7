@@ -1,13 +1,9 @@
-FROM arm32v7/ubuntu:16.04
+FROM resin/rpi-raspbian
+
+RUN echo "deb http://mirrordirector.raspbian.org/raspbian/ jessie main contrib non-free rpi" >> /etc/apt/sources.list
 
 RUN apt-get update -qq \
-	&& apt-get install -y libv4l-dev \
-	&& apt-get install -y libjpeg8-dev \
-    && apt-get install -y git \
-    && apt-get install -y python-pip \
-    && apt-get install -y python-dev \
-    && apt-get install -y python-setuptools \
-    && apt-get install -y zlib1g-dev
+    && apt-get install python-pip python-pil git g++-4.6-arm-linux-gnueabihf
 
 RUN pip install "django<2" Image==1.5.27 flask==1.0.2
 
